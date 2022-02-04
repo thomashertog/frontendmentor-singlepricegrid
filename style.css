@@ -1,0 +1,124 @@
+@font-face {
+    font-family: 'Karla';
+    src: url('fonts/Karla-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Karla';
+    src: url('fonts/Karla-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+:root{
+    --cyan: 179, 62%, 43%;
+    --bright-yellow: hsl(71,73%, 54%);
+
+    --light-gray: hsl(204, 43%, 93%);
+    --grayish-blue: hsl(218, 22%, 67%);
+}
+
+body{
+    background-color: var(--light-gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Karla';
+}
+
+.card{
+    width: 90%;
+    border-radius: .5em;
+    background-color: white;
+    width: min(60%, 50em);
+    --card-padding: 1.5em;
+
+    display: grid;
+    grid-template-areas: "my-header"
+                        "my-main"
+                        "my-footer";
+}
+
+.card > header{
+    padding: var(--card-padding);
+    grid-area: my-header;
+}
+
+.card header h2{
+    color: hsl(var(--cyan));
+}
+
+.card .description{
+    color: var(--grayish-blue);
+}
+
+.card .highlighted{ 
+    color: var(--bright-yellow); 
+    font-weight: bold;
+    margin-block: 1em;
+}
+
+main{
+    background-color: hsl(var(--cyan));
+    padding: var(--card-padding);
+    grid-area: my-main;
+}
+
+main header{
+    font-size: 1.25em;
+}
+
+.price .amount{font-size: 2em;}
+
+.price :not(.amount){
+    opacity: .5;
+}
+
+
+button{
+    margin-block-start: 2em;
+    background-color: var(--bright-yellow);
+    border: none;
+    width: 100%;
+    border-radius: .5em;
+    padding-block: .75em;
+}
+
+footer{
+    background-color: hsla(var(--cyan), .8);
+    color: white;
+    padding: var(--card-padding);
+    padding-block-end: 0;
+    border-radius: 0 0 .5em .5em;
+    grid-area: my-footer;
+}
+
+footer ul{
+    list-style: none;
+    padding: 0;
+}
+
+.darker-background :is(header, div, p, button){
+    color: white;
+}
+
+.darker-background li{
+    color: var(--light-gray);
+}
+
+@media screen and (min-width: 750px) {
+    .card{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:"my-header my-header"
+                            "my-main my-footer";
+    }
+
+    footer{
+        border-bottom-left-radius: 0; 
+    }
+
+    main{
+        border-bottom-left-radius: .5em;
+    }
+}
